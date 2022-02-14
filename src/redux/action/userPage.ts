@@ -3,6 +3,7 @@ import {
   IUserPageAction,
   EUserPageAction,
   IError,
+  ISearchForm,
 } from '../../types/userPage';
 
 export const setLoading = (isLoading: boolean): IUserPageAction => ({
@@ -23,4 +24,9 @@ export const setError = (error: IError): IUserPageAction => ({
 export const setCurrPage = (currentPage: number): IUserPageAction => ({
   type: EUserPageAction.SET_CURRPAGE,
   payload: { currentPage },
+});
+
+export const setForm = (form: ISearchForm): IUserPageAction => ({
+  type: EUserPageAction.SET_FORM,
+  payload: { form },
 });

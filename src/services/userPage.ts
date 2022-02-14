@@ -9,18 +9,37 @@ import {
 } from '../types';
 import { IError, IUserPageAction } from '../types/userPage';
 
-export const getUserData = (page: number): ThunkAction<
+export const getUserData = (orderQuery?: string): ThunkAction<
 PromiseVoid,
 AppState,
 {},
 IUserPageAction
-> => async (d: Dispatch) => {
+> => async (d: Dispatch, getState) => {
+  const { form, currentPage } = getState().userPage;
+
   try {
     d(setLoading(true));
-    const url = URL_REQUEST.get_user
-      .replace('{page}', page.toString())
+    let url = URL_REQUEST.get_user
+      .replace('{page}', currentPage.toString())
       .replace('{pageSize}', (MAX_DATA / MAX_USER_PER_PAGE).toString())
       .replace('{results}', MAX_USER_PER_PAGE.toString());
+
+    if (form.filter !== 'all') {
+      url = `${url}&gender=${form.filter}`;
+    } else {
+      url.replace(`&gender=${form.filter}`, '');
+    }
+
+    if (form.keyWord) {
+      url = `${url}&keyword=${form.keyWord}`;
+    } else {
+      url.replace(`&keyword=${form.keyWord}`, '');
+    }
+
+    if (orderQuery) {
+      url = `${url}&${orderQuery}`;
+    }
+
     const httpCfg: IHttpReqConfig = {
       method: 'GET',
       data: {},

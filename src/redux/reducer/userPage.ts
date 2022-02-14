@@ -6,6 +6,7 @@ import {
   IUserPageSetErrorAction,
   IUserPageState,
   EUserPageAction,
+  IUserPageSetFormAction,
 } from '../../types/userPage';
 
 const INITIAL_STATE: IUserPageState = {
@@ -15,6 +16,10 @@ const INITIAL_STATE: IUserPageState = {
   error: {
     message: '',
     status: -1,
+  },
+  form: {
+    filter: 'all',
+    keyWord: '',
   },
 };
 
@@ -35,6 +40,10 @@ const userPageReducer = (state = INITIAL_STATE, action: IUserPageAction): IUserP
     case EUserPageAction.SET_ERROR: {
       const { error } = action.payload as IUserPageSetErrorAction;
       return { ...state, error };
+    }
+    case EUserPageAction.SET_FORM: {
+      const { form } = action.payload as IUserPageSetFormAction;
+      return { ...state, form };
     }
     default:
       return state;

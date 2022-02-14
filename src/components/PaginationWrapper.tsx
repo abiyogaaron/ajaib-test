@@ -1,4 +1,6 @@
-import React, { FC, ReactNode, useCallback } from 'react';
+import React, {
+  FC, ReactNode, useCallback, memo,
+} from 'react';
 import { Pagination } from 'react-bootstrap';
 import styles from '../styles/PaginationWrapper.module.scss';
 
@@ -40,4 +42,4 @@ const PaginationWrapper: FC<IPaginationWrapperProps> = ({
   );
 };
 
-export default PaginationWrapper;
+export default memo(PaginationWrapper);

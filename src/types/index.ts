@@ -88,6 +88,11 @@ export interface IUserResponse {
   }
 }
 
+export interface IHeaderTable {
+  key: string;
+  title: string;
+}
+
 export type TUserPageData = Pick<
 IUserData,
 'registered' | 'name' | 'email' | 'login' | 'gender'

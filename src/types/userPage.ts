@@ -5,11 +5,17 @@ export interface IError {
   message: string;
 }
 
+export interface ISearchForm {
+  keyWord: string;
+  filter: string;
+}
+
 export interface IUserPageState {
   data: TUserPageData[];
   isLoading: boolean;
   currentPage: number;
   error: IError;
+  form: ISearchForm;
 }
 
 export enum EUserPageAction {
@@ -17,6 +23,7 @@ export enum EUserPageAction {
   SET_DATA = 'SET_DATA',
   SET_CURRPAGE = 'SET_CURRPAGE',
   SET_ERROR = 'SET_ERROR',
+  SET_FORM = 'SET_FORM',
 }
 
 export interface IUserPageSetLoadingAction {
@@ -35,11 +42,16 @@ export interface IUserPageSetErrorAction {
   error: IError;
 }
 
+export interface IUserPageSetFormAction {
+  form: ISearchForm;
+}
+
 export type TUserPagePayload =
   | IUserPageSetLoadingAction
   | IUserPageSetDataAction
   | IUserPageSetErrorAction
-  | IUserPageSetCurrPageAction;
+  | IUserPageSetCurrPageAction
+  | IUserPageSetFormAction;
 
 export interface IUserPageAction {
   type: EUserPageAction;
