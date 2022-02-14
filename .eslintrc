@@ -28,6 +28,8 @@
     "react/destructuring-assignment": "off",
     "react/no-array-index-key": "warn",
     "react/prop-types": "off",
-    "react/sort-comp": "off"
+    "react/sort-comp": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
