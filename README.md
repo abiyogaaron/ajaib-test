@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Axios
 
 ## Production site
-Open 
+Open [https://ajaib-test-kixgr.ondigitalocean.app/](https://ajaib-test-kixgr.ondigitalocean.app/) to view it
 
 ## Available Scripts
 ### `npm run start`
