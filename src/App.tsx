@@ -1,30 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useMemo } from 'react';
+import { Navbar, Container, Row } from 'react-bootstrap';
+import {
+  Route, Switch,
+} from 'react-router-dom';
+import Home from './pages/Home';
+import logo from './ajaib-logo.png';
 
-function App() {
+const App: FC = () => {
+  const routes = useMemo(() => (
+    <Switch>
+      <Route
+        exact
+        path="/"
+        render={() => (
+          <Home />
+        )}
+      />
+    </Switch>
+  ), []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.tsx</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand>
+            <img
+              alt=""
+              src={logo}
+              width="128"
+              height="auto"
+              className="d-inline-block align-top"
+            />
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
+      <Container>
+        <Row>
+          {routes}
+        </Row>
+      </Container>
+    </>
   );
-}
+};
 
 export default App;
