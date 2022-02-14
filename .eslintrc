@@ -2,7 +2,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "extends": ["airbnb-typescript"],
+  "extends": ["airbnb-typescript", "plugin:react-hooks/recommended"],
   "rules": {
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/no-use-before-define": "off",
