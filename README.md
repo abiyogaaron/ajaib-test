@@ -37,6 +37,8 @@ Runs the react app build with specific file `env.[staging-state]`
 - **/users** => `pages/UserPage.tsx` (list of User)
 
 ## Project folder structure
+### `__test__`
+contains unit test file and snapshot test (not all finished)
 ### `components`
 contains list of reusable components pagination, searchWrapper, dataTable
 ### `constants`

@@ -9,7 +9,7 @@ import {
   IUserPageSetFormAction,
 } from '../../types/userPage';
 
-const INITIAL_STATE: IUserPageState = {
+export const INITIAL_STATE: IUserPageState = {
   isLoading: false,
   data: [],
   currentPage: 1,
