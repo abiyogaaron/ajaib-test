@@ -15,5 +15,13 @@ export const ERROR_MESSAGE: { [key: string | number ]: any } = {
 
 export const MAX_USER_PER_PAGE = 5;
 
-// asume max data is 30
-export const MAX_DATA = 10;
+// asume max data is 50
+export const MAX_DATA = 50;
+
+export const USER_PAGE_TABLE_HEADERS = [
+  'Username',
+  'Name',
+  'Email',
+  'Gender',
+  'Registered Date',
+];

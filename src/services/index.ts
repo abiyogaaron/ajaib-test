@@ -5,8 +5,8 @@ import axios, {
 import { ERROR_MESSAGE } from '../constants';
 import { EStatusErrorCode, IHttpReqConfig } from '../types';
 
-function httpRequest<respType = any>(url: string, httpConfig: IHttpReqConfig) {
-  return new Promise((resolve, reject) => {
+function httpRequest<respType = any>(url: string, httpConfig: IHttpReqConfig): Promise<respType> {
+  return new Promise<respType>((resolve, reject) => {
     axios(url, httpConfig)
       .then((response: AxiosResponse<respType>) => {
         resolve(response.data);

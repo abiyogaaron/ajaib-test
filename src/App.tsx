@@ -1,10 +1,16 @@
-import React, { FC, useMemo } from 'react';
+import React, {
+  FC, useMemo, lazy, Suspense,
+} from 'react';
 import { Navbar, Container, Row } from 'react-bootstrap';
 import {
   Route, Switch,
 } from 'react-router-dom';
-import Home from './pages/Home';
+
+import PageLoader from './components/PageLoader';
+
 import logo from './ajaib-logo.png';
+
+const Home = lazy(() => import('./pages/Home'));
 
 const App: FC = () => {
   const routes = useMemo(() => (
@@ -36,7 +42,10 @@ const App: FC = () => {
       </Navbar>
       <Container>
         <Row>
-          {routes}
+          <Suspense fallback={<PageLoader />}>
+            {/* routes here so navbar and sidebar no need to be created or destroyed every change page */}
+            {routes}
+          </Suspense>
         </Row>
       </Container>
     </>
