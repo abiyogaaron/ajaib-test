@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
+import { toast } from 'react-toastify';
 import httpRequest from '.';
 import { MAX_DATA, MAX_USER_PER_PAGE, URL_REQUEST } from '../constants';
 import { AppState } from '../redux';
@@ -55,7 +56,10 @@ IUserPageAction
     }));
     d(setData(reformatUsers));
   } catch (err) {
+    const { message } = err as IError;
+
     d(setError(err as IError));
+    toast.error(message);
   } finally {
     d(setLoading(false));
   }

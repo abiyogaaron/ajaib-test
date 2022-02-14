@@ -2,6 +2,7 @@ import React, {
   FC, useMemo, lazy, Suspense,
 } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
+import { ToastContainer } from 'react-toastify';
 import {
   Route, Switch, useHistory,
 } from 'react-router-dom';
@@ -63,6 +64,7 @@ const App: FC = () => {
           {routes}
         </Suspense>
       </Container>
+      <ToastContainer />
     </>
   );
 };
