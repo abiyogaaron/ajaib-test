@@ -27,6 +27,7 @@ const PaginationWrapper: FC<IPaginationWrapperProps> = ({
           active={number === currentPage}
           onClick={() => handleClickPage(number)}
           disabled={isLoading}
+          data-testid="pagination-item"
         >
           {number}
         </Pagination.Item>,
@@ -36,7 +37,7 @@ const PaginationWrapper: FC<IPaginationWrapperProps> = ({
   }, [currentPage, isLoading, handleClickPage, pageSize]);
 
   return (
-    <Pagination className={styles['pagination-wrapper']}>
+    <Pagination className={styles['pagination-wrapper']} data-testid="pagination-wrapper">
       {renderPaginationItem()}
     </Pagination>
   );

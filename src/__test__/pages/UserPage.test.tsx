@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import {
-  render, cleanup, waitFor, screen, within,
+  render, cleanup, waitFor, screen, within, fireEvent,
 } from '@testing-library/react';
 import { Provider } from 'react-redux';
 
@@ -66,5 +66,27 @@ describe('---- Mounting Users Page ----', () => {
         reformatDate(user[index].registered.date),
       )).toBeInTheDocument();
     });
+  });
+
+  test('Pagination Click Mechanism', () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={[{ pathname: '/users' }]}>
+          <UserPage />
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    const { getAllByTestId } = within(screen.getByTestId('pagination-wrapper'));
+    const paginationItems = getAllByTestId('pagination-item');
+
+    const { getByText } = within(paginationItems[1]);
+    expect(getByText(2)).toBeInTheDocument();
+
+    fireEvent.click(paginationItems[1]);
+    const { currentPage } = store.getState().userPage;
+    expect(currentPage).toBe(2);
+
+    screen.debug(paginationItems[1]);
   });
 });

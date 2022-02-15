@@ -109,7 +109,6 @@ const UserPage: FC = () => {
             data={usersData}
             isLoading={isLoading}
             handleSort={handleSortClick}
-            data-testid="users-data-table"
           />
           <PaginationWrapper
             currentPage={currentPage}
