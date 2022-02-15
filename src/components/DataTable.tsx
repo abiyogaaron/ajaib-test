@@ -39,7 +39,7 @@ const DataTable = <T extends object>({
   }, [sortObj, handleSort]);
 
   const renderHeader = useCallback((): ReactNode[] => headers.map((item, index) => (
-    <th key={`${item}-${index}`}>
+    <th key={`${item}-${index}`} data-testid="table-th">
       {item.title}
       &nbsp;
       <FaSort className={styles['data-table-icon']} onClick={() => handleClickSort(item.key)} />
@@ -47,7 +47,7 @@ const DataTable = <T extends object>({
   )), [headers, handleClickSort]);
 
   const renderData = useCallback((): ReactNode[] => data.map((row, index) => (
-    <tr key={`tr-${index}`}>
+    <tr key={`tr-${index}`} data-testid="table-tr">
       {renderFields(row, index)}
     </tr>
   )), [data, isLoading]);
@@ -69,14 +69,14 @@ const DataTable = <T extends object>({
     return (
       <Card className="d-flex align-items-center justify-content-center mb-5">
         <Card.Body>
-          <Spinner animation="border" variant="primary" />
+          <Spinner animation="border" variant="primary" data-testid="loading-spinner" />
         </Card.Body>
       </Card>
     );
   }
 
   return (
-    <Table striped bordered responsive>
+    <Table striped bordered responsive role="table">
       <thead>
         <tr>
           {renderHeader()}

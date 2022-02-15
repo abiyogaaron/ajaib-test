@@ -19,7 +19,7 @@ export interface IHttpReqConfig extends AxiosRequestConfig {
 }
 
 export type TGender = 'male' | 'female';
-export type TTitle = 'Mr'| 'Mrs' | 'Ms' | 'Miss' | 'Madame';
+export type TTitle = 'Mr'| 'Mrs' | 'Ms' | 'Miss' | 'Madame' | 'Mademoiselle';
 
 interface IUserData {
   gender: TGender;

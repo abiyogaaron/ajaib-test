@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Breadcrumb } from 'react-bootstrap';
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 const BreadCrumbsTab: FC = () => {
   const location = useLocation();
